@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopción de Perros</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("img/fondo.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: black;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 182, 193, 0.6);
+            border-radius: 5px;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: rgba(255, 182, 193, 0.85);
+            list-style: none;
+            padding: 0;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 10px;
+            color: white;
+        }
+
+        .submenu li a:hover {
+            background-color: rgba(255, 182, 193, 0.6);
+        }
+
+        section {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 900px;
+            border-radius: 10px;
+        }
+
+        .perros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .perro {
+            background-color: rgba(255, 182, 193, 0.2);
+            border: 1px solid #ffb6c1;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .perro img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .perro button {
+            background-color: #ff80ab;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .perro button:hover {
+            background-color: #ff4081;
+        }
+
+        .reloj {
+            position: fixed;
+            top: 10px;
+            right: 17px;
+            background: rgba(145, 94, 101, 0.6);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #masinfo .ver-video {
+            display: none;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(255, 182, 193, 0.6);
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #masinfo:hover .ver-video {
+            display: inline-block;
+        }
+
+        #masinfo .ver-video:hover {
+            background-color: #ff80ab;
+        }
+
+        #contacto p {
+            margin: 5px 0;
+            color: #ffb6c1;
+        }
+    </style>
+</head>
+<body>
+    <div class="reloj" id="reloj"></div>
+
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="dropdown">
+                    <a href="#">Nosotros</a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="mostrarSeccion('quienes')">Quiénes Somos</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('mision')">Misión</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('vision')">Visión</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#masinfo">Más Información</a>
+                    <ul class="submenu">
+                        <li><a id="linkVideo" href="https://youtu.be/mlfzDp9rjos?si=-JynliMMppFCSQH5" target="_blank">Ver Video</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="nosotros">
+        <div id="quienes" class="contenido-nosotros" style="display:none;">
+            <h2>Quiénes Somos</h2>
+            <p>Somos una organización que rescata y adopta perros sin hogar.</p>
+        </div>
+        <div id="mision" class="contenido-nosotros" style="display:none;">
+            <h2>Misión</h2>
+            <p>Queremos darles un hogar a los perros que más lo necesitan.</p>
+        </div>
+        <div id="vision" class="contenido-nosotros" style="display:none;">
+            <h2>Visión</h2>
+            <p>Un mundo donde todos los perros tengan un hogar.</p>
+        </div>
+    </section>
+
+    <section id="catalogo">
+        <h2>Catálogo de Perros</h2>
+        <div class="perros">
+            <div class="perro">
+                <img src="img/perrito1.jpeg" alt="Perro 1">
+                <h3>Nombre: Max</h3>
+                <p>Edad: 3 años</p>
+                <p>Historia: Era de una familia rica, pero lo dieron porque tenían muchos perros. Es un perrito muy dormilón y comelón.</p>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+            <div class="perro">
+                <img src="img/perrito2.jpg" alt="Perro 2">
+                <h3>Nombre: Bagheera</h3>
+                <p>Edad: 3 años</p>
+                <p>Lo rescatamos de la calle junto a su madre, pero ella no sobrevivió. Es muy juguetón y travieso.</p>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+            <div class="perro">
+                <img src="img/perrito3.jpg" alt="Perro 3">
+                <h3>Nombre: Taco</h3>
+                <p>Edad: 4 años</p>
+                <p>Fue rescatado de un ambiente de maltrato. Ahora está feliz, saludable y es súper cariñoso.</p>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+        </div>
+        <div id="ubicacion" style="display:none;">
+            <h3>Ubicación</h3>
+            <p>Estamos en Tijuana, BC</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Email: adopcionesnye@gmail.com</p>
+        <p>Teléfono: 664-115-3201</p>
+    </section>
+
+    <script>
+        function actualizarReloj() {
+            const reloj = document.getElementById('reloj');
+            const ahora = new Date();
+            
+            const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+            let horas = ahora.getHours();
+            const minutos = ahora.getMinutes().toString().padStart(2, '0');
+            const segundos = ahora.getSeconds().toString().padStart(2, '0');
+            const ampm = horas >= 12 ? 'PM' : 'AM';
+
+            horas = horas % 12;
+            horas = horas ? horas : 12;
+
+            reloj.textContent = `${fecha} - ${horas}:${minutos}:${segundos} ${ampm}`;
+        }
+        setInterval(actualizarReloj, 1000);
+        actualizarReloj();
+
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('.contenido-nosotros');
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none';
+            });
+
+            const mostrar = document.getElementById(id);
+            if (mostrar) {
+                mostrar.style.display = 'block';
+            }
+        }
+
+        function adoptarPerro() {
+            const ubicacion = document.getElementById('ubicacion');
+            ubicacion.innerHTML = `
+                <h3>¡Muy buena elección!</h3>
+                <p>Ahora te llevaré al formulario de adopción.</p>
+                <p><a href="formulario.php" style="color:white; font-weight:bold; text-decoration:underline;">Ir al Formulario</a></p>
+            `;
+            ubicacion.style.display = 'block';
+            ubicacion.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<?php
+$mascota = $_GET['mascota'] ?? 'Desconocido';
+
+// Base de datos de perritos
+$mascotas = [
+    'Capuchino' => [
+        'edad' => '8 años',
+        'raza' => 'Pug',
+        'color' => 'Cervato',
+        'peso' => '12 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Capuchino es un perrito muy amigable y muy buena compañía, siempre tendrás un compañero que te acompañe a diferentes aventuras. Es un gran fan de la comida, en especial de las salchichas, así que no dudes en premiarlo de vez en cuando. Es bastante juguetón, así que no dudes en gastar su energía sacándolo a pasear. 🐾'
+    ],
+    'Sanson' => [
+        'edad' => '4 años',
+        'raza' => 'Mestizo',
+        'color' => 'No especificado',
+        'peso' => '15 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Sansón es de comer mucho, tiene aproximadamente unos 4 años, no es muy travieso pues se la pasa dormido o comiendo, es muy juguetón y cariñoso, puede estar dentro de casa ya que no es muy de hacer desmadre, come de todo, frutas, verduras, carne, todo lo que des. 🐾'
+    ],
+    'bagheera' => [
+        'edad' => '1 año',
+        'raza' => 'Pug',
+        'color' => 'Cervato',
+        'peso' => '9 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Bagheera es muy travieso, suele comer mucho, no está acostumbrado a estar dentro de casa, es hijo de Sansón. Nació el 4 de abril de 2022 con un hermano que lamentablemente falleció. Suele salirse a la calle, pero obedece y es muy amigable. 🐾'
+    ],
+    'kylie' => [
+        'edad' => '4 años',
+        'raza' => 'Mestiza',
+        'color' => 'Gris',
+        'peso' => '12 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Kylie es muy cariñosa con gente que conoce, sabe cuidar la casa ya que si no conoce se vuelve brava, es de dormir mucho, está acostumbrada a los sobres pues del diario recibe, está acostumbrada a bañarse, se puede quedar dentro de casa ya que no es muy traviesa, se la pasa acostada. 🐾'
+    ],
+    'nube' => [
+        'edad' => '2 años',
+        'raza' => 'Mestizo',
+        'color' => 'Blanco',
+        'peso' => '8 kg',
+        'tamaño' => 'Pequeño',
+        'descripcion' => 'Nube es un perrito muy cariñoso y juguetón, cuando ve a una persona, corre rápido hacia ella para jugar. Le encanta comer, siempre está buscando algo para picotear y es muy travieso, siempre buscando aventura en el rancho donde vive con sus hermanos. Es perfecto para alguien que busque un compañero divertido y lleno de energía. 🐾'
+    ],
+    'Manchas' => [
+        'edad' => '5 años',
+        'raza' => 'Mestizo',
+        'color' => 'Blanco con Manchas Cafes',
+        'peso' => '16 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Manchas es un perro muy energetico, pero no muy sociable con los perros, le gusta jugar con algunas personas pero cuando es una persona mala lo detecta, le gusta mucho comer y jugar con su pelota verde fosfo. 🐾'
+    ],
+    'Luna' => [
+        'edad' => '8 años',
+        'raza' => 'Mestiza',
+        'color' => 'Blanca',
+        'peso' => '10 kg',
+        'tamaño' => 'Mediana',
+        'descripcion' => 'Luna es una perrita muy juguetona, le gusta mucho jugar con todos, cada persona que conoce lo ve muy amigable, no es buena detectando a la gente mala, le gusta salir a pasear y comer sobres. 🐾'
+    ],
+    'Gordo' => [
+        'edad' => '10 años',
+        'raza' => 'Pug',
+        'color' => 'Café claro y oscuro',
+        'peso' => '20 kg',
+        'tamaño' => 'Mediano',
+        'descripcion' => 'Gordo era un perro rico, ya que vivia con gente de dinero, pero un dia se perdio y nosotros lo rescatamos, no le gusta jugar, le encanta dormir y comer y si se habla de salir a pasear le gusta pero en carro, lo que mas ama es su camita. 🐾'
+    ],
+    'nova y onix' => [
+    'edad' => '2.5 meses',
+    'raza' => 'Mestizos',
+    'color' => 'Nova: negra / Onix: gris atigrado',
+    'peso' => '1 kg cada uno',
+    'tamaño' => 'Pequeños',
+    'descripcion' => 'Nova y Onix son dos bebés que fueron rescatados juntos de una caja abandonada. Nova es una panterita mini, toda negra y súper activa, le encanta corretear pelotitas y escalar lo que pueda. Onix es más tranquilo, con su pelito gris atigrado parece un tigrecito en miniatura. Le encanta dormir encima de Nova y hacerle masajitos con sus patitas. Ambos son sanitos, cariñosos y sociables. Les encanta estar con gente y ronronean al primer contacto. Adoptarlos juntos es regalarte doble amor felino. 🐾'
+],
+'chispa' => [
+    'edad' => '4 meses',
+    'raza' => 'Mestizo',
+    'color' => 'Naranja intenso con rayitas claras',
+    'peso' => '1.4 kg',
+    'tamaño' => 'Pequeño',
+    'descripcion' => 'Chispa es un gatito naranja lleno de energía y ternura. Su nombre no es casualidad, ¡parece una chispa encendida todo el día! Le encanta correr por toda la casa, esconderse en cajas y perseguir su propia cola como si fuera el enemigo. A pesar de su espíritu aventurero, en cuanto se cansa, busca una pierna humana para dormirse encima. Es súper sociable, ideal para familias o personas que quieran un gato que no se despegue de ti. Le gustan los mimos, los sobrecitos de comida y mirar por la ventana como si fuera detective. 🐾'
+],
+'copito' => [
+    'edad' => '3 meses',
+    'raza' => 'Mestizo',
+    'color' => 'Blanco ',
+    'peso' => '1.3 kg',
+    'tamaño' => 'Pequeño',
+    'descripcion' => 'Copito es un gatito blanco como el azúcar glass, con unos ojitos que derriten hasta el corazón más frío. Es muy tierno, tranquilo y adora que lo carguen como bebé. Si lo dejas, se te sube al hombro y ahí se queda como loro felino. Le gusta dormir en mantitas suaves, jugar con peluches pequeñitos y seguirte por toda la casa como si fueras su héroe. A veces se emociona tanto que da saltitos raros y te roba risas. Perfecto para un hogar calmado donde lo mimen como se merece. 🐾'
+]
+
+
+
+];
+
+// Validación
+$info = $mascotas[$mascota] ?? null;
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperamento de <?php echo htmlspecialchars($mascota); ?></title>
+    <style>
+        body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 30px;
+    background-color: #ffe6f0; /* Un rosa muy suave para el fondo base */
+    background-image: url('huellitastop.jpeg'); /* Reemplaza con la URL de tu imagen */
+    background-size: cover; /* Cubre todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.card {
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9); /* Blanco con ligera transparencia para que se vea el fondo */
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3); /* Sombra rosada más pronunciada */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Ligeramente más grande al pasar el ratón */
+    box-shadow: 0 12px 20px rgba(255, 182, 193, 0.5); /* Sombra más intensa al hacer hover */
+}
+
+h2 {
+    color: #e91e63; /* Un rosa más intenso para el título */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Ligera sombra en el texto */
+}
+
+p {
+    line-height: 1.6;
+    color: #555; /* Un gris un poco más suave */
+}
+
+.btn-adoptar {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px; /* Un poco más de padding */
+    background-color: #ff69b4; /* Rosa llamativo para el botón */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(255, 105, 180, 0.3); /* Ligera sombra en el botón */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Transiciones para el movimiento y la sombra */
+}
+
+.btn-adoptar:hover {
+    transform: translateY(-2px); /* Ligeramente hacia arriba al hacer hover */
+    box-shadow: 0 6px 10px rgba(255, 105, 180, 0.5); /* Sombra más marcada al hacer hover */
+    background-color: #d81b60; /* Tono rosa más oscuro al hacer hover */
+}
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <?php if ($info): ?>
+        <h2><?php echo htmlspecialchars($mascota); ?></h2>
+        <p><strong>Edad:</strong> <?php echo $info['edad']; ?></p>
+        <p><strong>Raza:</strong> <?php echo $info['raza']; ?></p>
+        <p><strong>Color:</strong> <?php echo $info['color']; ?></p>
+        <p><strong>Peso:</strong> <?php echo $info['peso']; ?></p>
+        <p><strong>Tamaño:</strong> <?php echo $info['tamaño']; ?></p>
+        <p><strong>Descripción:</strong> <?php echo $info['descripcion']; ?></p>
+        <a class="btn-adoptar" href="formulario.php?mascota=<?php echo urlencode($mascota); ?>">Adoptar a <?php echo htmlspecialchars($mascota); ?></a>
+    <?php else: ?>
+        <h2>Perrito no encontrado</h2>
+        <p>Ups, no tenemos información de ese lomito aún.</p>
+    <?php endif; ?>
+</div>
+
+</body>
+</html>

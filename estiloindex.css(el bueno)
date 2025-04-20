@@ -1,0 +1,314 @@
+body {
+    margin: 0; /* Elimina el margen predeterminado del body */
+    font-family: sans-serif; /* Elige una fuente de tu preferencia */
+}
+
+.bienvenida {
+    position: relative; /* Necesario para posicionar elementos dentro */
+    width: 100%;
+    height: 100vh; /* O la altura que desees para la sección de bienvenida */
+    overflow: hidden; /* Oculta las imágenes que están fuera del contenedor */
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeSlider 10s infinite; /* Define la animación y su duración */
+}
+
+.slider img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin deformarla */
+    opacity: 0; /* Inicialmente todas las imágenes están ocultas */
+    animation: fadeInOut 10s infinite; /* Aplica la animación de fundido a cada imagen */
+}
+
+/* Define un retraso para cada imagen para crear el efecto de bucle */
+.slider img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slider img:nth-child(2) {
+    animation-delay: 3.33s; /* Ajusta el retraso según la duración total de la animación y el número de imágenes */
+}
+
+.slider img:nth-child(3) {
+    animation-delay: 6.66s;
+}
+
+/* Agrega más retrasos para más imágenes */
+
+.mensaje-bienvenida {
+    position: absolute;
+    bottom: 30px; /*posicion del texto en la parte inferior */
+    right: 30px; /* posicion del texto desde la parte derecha */
+    color: white;
+    text-align: right; /* Alineamos el texto a la derecha */
+    z-index: 10;
+    /* Fuente de letra (puedes elegir otra de tu preferencia) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.mensaje-bienvenida h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px #f1d452, 0 0 20px #ffa425; /* Dos sombras blancas para un efecto de resplandor */
+}
+
+.mensaje-bienvenida p {
+    font-size: 1em;
+    line-height: 1.4;
+    text-shadow: 0 0 5px #ed71bb; /* Resplandor más sutil */
+}
+
+.contenido-principal {
+    padding-top: 100vh; /* hace que el contenido aparezca por debajo de la bienvenida(la neta no funciona pa nd solo que si lo quitas algo 
+    cambia pero no vi que? */
+    
+}
+
+/* Animaciones */
+@keyframes fadeSlider {
+    0% { opacity: 1; } /* lo mantiene visible  */
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    33.33% { opacity: 1; } /* el tiempo de la imagen(geminiiiiii)*/
+    43.33% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+
+
+body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("huellitastop.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: black;
+        }
+
+       
+@keyframes fadeInBody {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+header {
+    background: linear-gradient(135deg, #ffb6c1, #ffd6e8);
+    padding: 15px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(to right, #fff0f5, #fffacc);
+    top: 0;
+    left: 0;
+}
+
+header {
+    position: fixed; /* Fija el navegador*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* ajusta el fondo*/
+    z-index: 30; /* Asegura que esté por encima de la sección de bienvenida */
+    padding: 30px 20px; /* ajuste para el navegador, ancho y largo */
+    box-sizing: border-box; 
+    
+}
+
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #fff0f5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(4px);
+}
+
+.menu a:hover {
+    background-color: #ffe0eb;
+    color: #a64f6b;
+    transform: scale(1.08);
+    box-shadow: 0 0 14px rgba(255, 192, 203, 0.7);
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 182, 193, 0.95);
+    list-style: none;
+    padding: 10px;
+    border-radius: 12px;
+    top: 45px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown:hover .submenu {
+    display: block;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    background: rgba(255, 240, 245, 0.9);
+    border-radius: 30px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 1000px;
+    box-shadow: 0 12px 40px rgba(255, 182, 193, 0.4);
+    transition: transform 0.5s ease;
+}
+
+section:hover {
+    transform: scale(1.01);
+}
+
+
+
+.reloj {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    background: rgba(255, 182, 193, 0.6);
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+#masinfo .ver-video {
+    display: none;
+    background-color: rgba(255, 160, 180, 0.7);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#masinfo:hover .ver-video {
+    display: inline-block;
+}
+
+#masinfo .ver-video:hover {
+    background-color: #ff85a2;
+}
+
+#contacto p {
+    color: #a44e6e;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(255, 240, 245, 0.9);
+}
+
+/* Logo */
+header::after {
+    content: '';
+    background: url('dogpp.jpeg'); /* Aquí podría estar la URL de tu logo antiguo */
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+
+#contacto p:nth-child(3)::before { /* Icono para facebook */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background-image: url('icons8-facebook-nuevo-48.png'); /* Reemplaza con la ruta real */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#contacto p:nth-child(4)::before { /* Icono para instagram */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background-image: url('icons8-instagram-48.png'); /* Reemplaza con la ruta real */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#contacto p:nth-child(5)::before { /* Icono para ubicacion */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background-image: url('icons8-ubicación-32.png'); /* Reemplaza con la ruta real */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#contacto p:nth-child(6)::before { /* Icono para email */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background-image: url('icons8-nuevo-post-48.png'); /* Reemplaza con la ruta real */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#contacto p:nth-child(7)::before { /* Icono para teléfono */
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    background-image: url('icons8-teléfono-94.png'); /* Reemplaza con la ruta real */
+    background-size: contain;
+    background-repeat: no-repeat;
+}

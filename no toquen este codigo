@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopción de Perros</title>
+    <link rel="stylesheet" href="estiloindex1.css">
+</head>
+<body>
+    <div class="reloj" id="reloj"></div>
+
+    <div class="bienvenida">
+        <div class="slider">
+            <img src="fondo1.jpeg" alt="Imagen 1">
+            <img src="fondo4.jpeg" alt="Imagen 2">
+            <img src="fondo3.jpeg" alt="Imagen 3">
+            </div>
+        <div class="mensaje-bienvenida">
+            <h1>Huellitas Felices</h1>
+            <p>Dejando Huellas en el Corazon.</p>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="dropdown">
+                    <a href="#">Nosotros</a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="mostrarSeccion('quienes')">Quiénes Somos</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('mision')">Misión</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('vision')">Visión</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#masinfo">Más Información</a>
+                    <ul class="submenu">
+                        <li><a id="linkVideo" href="https://youtu.be/mlfzDp9rjos?si=-JynliMMppFCSQH5" target="_blank">Ver Video</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="nosotros">
+        <div id="quienes" class="contenido-nosotros" style="display:none;">
+            <h2>Quiénes Somos</h2>
+            <h3>Se estima que en México existen cerca de 19.6 millones de perros y gatos en situación de calle, dígito que crece un sorprendente 20% anual.</h3>
+            <p>Somos una organización que rescata y adopta perros sin hogar con el fin de ayudar 
+                a perros en situacion de calle, dandoles un vida mejor y llena de amor, por eso es que 
+                tratamos de buscar el dueño que pueda tener dicho perrito, nos gusta ayudar y tratamos de ayudar a 
+                todos los que podamos.</p>
+                
+                <p>Esta organizacion se fundo en el año 2022
+                al ver muchos perros en situacion de calle por abandonos y malos dueños nos pusimos en manos a la obra
+                para ayudar a tdos los perritos posibles para uan mejor forma de vida para ellos, adoptar no cuesta mucho.</p>
+
+                <img src="fondo2.jpeg" alt="pegrines" width="258" height="122">
+        </div>
+        <div id="mision" class="contenido-nosotros" style="display:none;">
+            <h2>Misión</h2>
+            <p>Nos mueve el deseo de ver a cada perrito con un plato lleno, una camita tibia y, sobre todo, una familia 
+                que lo ame. Nuestra mision es luchar contra el abandono, darles voz a los que no tienen y conectar almas humanas
+                con corazones peludos. Rescatamos, rehabilitamos y preparamos a cada perrito para que se encuentre su "Para siempre".</p>
+        </div>
+        <div id="vision" class="contenido-nosotros" style="display:none;">
+            <h2>Visión</h2>
+            <p>Soñamos con calles vacias de abandono y hogares llenos de amor. Nos imaginamos un mundi donde adoptar sea la primera opcion,
+                donde el respeto por la vida animal sea parte de nuestra cultura. En ese futuro, todo los perritos tendran nombre, cariacias
+                y una familia que celebre cada unoi de sus dias y trabajamos sin descando para hacerlo realidad.</p>
+        </div>
+    </section>
+
+    <section id="catalogo">
+        <h2> U•ᴥ•U En Adopcion</h2>
+        <div class="perros">
+            <div class="perro">
+                <img src="capu.jpg" alt="Perro 1">
+                <h3>Nombre:Capuchino</h3>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+            <div class="perro">
+                <img src="sanson.jpeg" alt="Perro 2">
+                <h3>Nombre: Sanson</h3>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+            <div class="perro">
+                <img src="baghera.jpeg" alt="Perro 3">
+                <h3>Nombre: Baghera</h3>
+                <button onclick="adoptarPerro()">Adoptar</button>
+            </div>
+        </div>
+        <div id="ubicacion" style="display:none;">
+            <h3>Ubicación</h3>
+            <p>Estamos en Tijuana, BC</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <h3>Redes Sociales</h3>
+        <p> facebook:Huellitas Felices</p>
+        <p> instagram: huellitas_felices</p>
+        <p>Ubicacion: Tijuana B.C, Zona rio</p>
+        <p>Email: huellasfelices@gmail.com</p>
+        <p>Teléfono: 664-115-3201</p>
+    </section>
+
+    <script>
+        function actualizarReloj() {
+            const reloj = document.getElementById('reloj');
+            const ahora = new Date();
+            
+            const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+            let horas = ahora.getHours();
+            const minutos = ahora.getMinutes().toString().padStart(2, '0');
+            const segundos = ahora.getSeconds().toString().padStart(2, '0');
+            const ampm = horas >= 12 ? 'PM' : 'AM';
+
+            horas = horas % 12;
+            horas = horas ? horas : 12;
+
+            reloj.textContent = `${fecha} - ${horas}:${minutos}:${segundos} ${ampm}`;
+        }
+        setInterval(actualizarReloj, 1000);
+        actualizarReloj();
+
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('.contenido-nosotros');
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none';
+            });
+
+            const mostrar = document.getElementById(id);
+            if (mostrar) {
+                mostrar.style.display = 'block';
+            }
+        }
+
+        function adoptarPerro() {
+            const ubicacion = document.getElementById('ubicacion');
+            ubicacion.innerHTML = `
+                <h3>¡Muy buena elección!</h3>
+                <p>Ahora te llevaré al formulario de adopción.</p>
+                <p><a href="formulario.php" style="color:pink; font-weight:bold; text-decoration:underline;">Ir al Formulario</a></p>
+            `;
+            ubicacion.style.display = 'block';
+            ubicacion.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

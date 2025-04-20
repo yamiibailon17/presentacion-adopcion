@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopción de Perros</title>
+    <link rel="stylesheet" href="estiloindex1.css">//cambialo con el nombre de tu archivo css
+</head>
+<style>
+     .container {
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    background-color: #ffe6f0; /* Un rosa muy suave */
+    border-radius: 15px; /* Un poco más redondeado */
+    padding: 25px;
+    width: 200px;
+    box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3); /* Sombra más pronunciada y rosada */
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+    box-shadow: 0 12px 20px rgba(255, 182, 193, 0.5); /* Sombra más intensa al hacer hover */
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #e91e63; /* Un rosa más intenso para el título */
+}
+
+.card button {
+    background-color: #ff69b4; /* Un rosa más llamativo (Hot Pink) */
+    border: none;
+    color: white;
+    padding: 12px 20px; /* Un poco más de padding para que se vea más prominente */
+    border-radius: 8px; /* Bordes más redondeados para el botón */
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Transiciones para el movimiento y la sombra */
+}
+
+.card button:hover {
+    transform: translateY(-3px); /* Ligeramente hacia arriba al hacer hover */
+    box-shadow: 0 6px 10px rgba(255, 105, 180, 0.5); /* Sombra más marcada al hacer hover */
+    background-color: #d81b60; /* Tono más oscuro al hacer hover */
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    max-height: 150px;
+    object-fit: cover;
+    filter: sepia(10%); /* Un ligero toque sepia para armonizar con los rosas */
+}
+
+    </style>
+<body>
+    <div class="reloj" id="reloj"></div>
+
+    <div class="bienvenida">
+        <div class="slider">
+            <img src="fondo1.jpeg" alt="Imagen 1">
+            <img src="fondo4.jpeg" alt="Imagen 2">
+            <img src="fondo3.jpeg" alt="Imagen 3">
+            </div>
+        <div class="mensaje-bienvenida">
+            <h1>Huellitas Felices</h1>
+            <p>Dejando Huellas en el Corazon.</p>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="dropdown">
+                    <a href="#">Nosotros</a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="mostrarSeccion('quienes')">Quiénes Somos</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('mision')">Misión</a></li>
+                        <li><a href="#" onclick="mostrarSeccion('vision')">Visión</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#masinfo">Más Información</a>
+                    <ul class="submenu">
+                        <li><a id="linkVideo" href="https://youtu.be/mlfzDp9rjos?si=-JynliMMppFCSQH5" target="_blank">Ver Video</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="nosotros">
+        <div id="quienes" class="contenido-nosotros" style="display:none;">
+            <h2>Quiénes Somos</h2>
+            <h3>Se estima que en México existen cerca de 19.6 millones de perros y gatos en situación de calle, dígito que crece un sorprendente 20% anual.</h3>
+            <p>Somos una organización que rescata y adopta perros sin hogar con el fin de ayudar 
+                a perros en situacion de calle, dandoles un vida mejor y llena de amor, por eso es que 
+                tratamos de buscar el dueño que pueda tener dicho perrito, nos gusta ayudar y tratamos de ayudar a 
+                todos los que podamos.</p>
+                
+                <p>Esta organizacion se fundo en el año 2022
+                al ver muchos perros en situacion de calle por abandonos y malos dueños nos pusimos en manos a la obra
+                para ayudar a tdos los perritos posibles para uan mejor forma de vida para ellos, adoptar no cuesta mucho.</p>
+
+                <img src="fondo2.jpeg" alt="pegrines" width="258" height="122">
+        </div>
+        <div id="mision" class="contenido-nosotros" style="display:none;">
+            <h2>Misión</h2>
+            <p>Nos mueve el deseo de ver a cada perrito con un plato lleno, una camita tibia y, sobre todo, una familia 
+                que lo ame. Nuestra mision es luchar contra el abandono, darles voz a los que no tienen y conectar almas humanas
+                con corazones peludos. Rescatamos, rehabilitamos y preparamos a cada perrito para que se encuentre su "Para siempre".</p>
+        </div>
+        <div id="vision" class="contenido-nosotros" style="display:none;">
+            <h2>Visión</h2>
+            <p>Soñamos con calles vacias de abandono y hogares llenos de amor. Nos imaginamos un mundi donde adoptar sea la primera opcion,
+                donde el respeto por la vida animal sea parte de nuestra cultura. En ese futuro, todo los perritos tendran nombre, cariacias
+                y una familia que celebre cada unoi de sus dias y trabajamos sin descando para hacerlo realidad.</p>
+        </div>
+    </section>
+
+    <!-- Cards de Perritos -->
+<section id="perritos" class="container">
+    <div class="card">
+        <h3>Capuchino</h3>
+        <img src="capu.jpg" alt="Capuchino">//imagenes tambien cambialas por las tuyas
+        <a href="infoperritos.php?mascota=Capuchino"><button>Temperamento</button></a>//cambiarlo con el nombre de tu php(con la de infoperritos)cambiaselo a cada linea
+    </div>
+    <div class="card">
+        <h3>Sanson</h3>
+        <img src="sanson.jpeg" alt="Sanson">
+        <a href="infoperritos.php?mascota=Sanson"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Bagheera</h3>
+        <img src="baghera.jpeg" alt="bagheera">
+        <a href="infoperritos.php?mascota=bagheera"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Kylie</h3>
+        <img src="bonito.jpeg" alt="kylie">
+        <a href="infoperritos.php?mascota=kylie"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Nube</h3>
+        <img src="copito.jpeg" alt="nube">
+        <a href="infoperritos.php?mascota=nube"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Manchas</h3>
+        <img src="manchas.jpeg" alt="Manchas">
+        <a href="infoperritos.php?mascota=Manchas"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Luna</h3>
+        <img src="luna.jpeg" alt="Luna">
+        <a href="infoperritos.php?mascota=Luna"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>Gordo</h3>
+        <img src="gordo.jpeg" alt="Gordo">
+        <a href="infoperritos.php?mascota=Gordo"><button>Temperamento</button></a>
+    </div>
+    <div class="card">
+        <h3>nova y onix</h3>
+        <img src="gato1.jpeg" alt="novaYOnix">
+        <a href="infoperritos.php?mascota=nova y onix"><button>Temperamento</button></a>       
+    </div>
+    <div class="card">
+        <h3>chispa</h3>
+        <img src="gato3.jpeg" alt="chispa">
+        <a href="infoperritos.php?mascota=chispa"><button>Temperamento</button></a>       
+    </div> 
+    <div class="card">
+        <h3>copito</h3>
+        <img src="gato2.jpeg" alt="copito">
+        <a href="infoperritos.php?mascota=copito"><button>Temperamento</button></a>       
+    </div> 
+</section>
+        <div id="ubicacion" style="display:none;">
+            <h3>Ubicación</h3>
+            <p>Estamos en Tijuana, BC</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <h3>Redes Sociales</h3>
+        <p> facebook:Huellitas Felices</p>
+        <p> instagram: huellitas_felices</p>
+        <p>Ubicacion: Tijuana B.C, Zona rio</p>
+        <p>Email: huellasfelices@gmail.com</p>
+        <p>Teléfono: 664-115-3201</p>
+    </section>
+
+    <script>
+        function actualizarReloj() {
+            const reloj = document.getElementById('reloj');
+            const ahora = new Date();
+            
+            const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+            let horas = ahora.getHours();
+            const minutos = ahora.getMinutes().toString().padStart(2, '0');
+            const segundos = ahora.getSeconds().toString().padStart(2, '0');
+            const ampm = horas >= 12 ? 'PM' : 'AM';
+
+            horas = horas % 12;
+            horas = horas ? horas : 12;
+
+            reloj.textContent = `${fecha} - ${horas}:${minutos}:${segundos} ${ampm}`;
+        }
+        setInterval(actualizarReloj, 1000);
+        actualizarReloj();
+
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('.contenido-nosotros');
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none';
+            });
+
+            const mostrar = document.getElementById(id);
+            if (mostrar) {
+                mostrar.style.display = 'block';
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

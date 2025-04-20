@@ -1,0 +1,315 @@
+body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("huellitastop.jpeg"); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: black;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Encabezado */
+header {
+    background: linear-gradient(270deg, #ffd6e8, #ffb6c1, #ffd6e8);
+    background-size: 600% 600%;
+    animation: bgFlow 10s ease infinite;
+    padding: 25px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+@keyframes bgFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Logo */
+header::before {
+    content: '';
+    background: url('doglogo.png') no-repeat center/contain;
+    position: absolute;
+    left: 20px;
+    width: 70px;
+    height: 70px;
+}
+
+/* Menú */
+.menu {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.menu a {
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s;
+    position: relative;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.menu a:hover {
+    color: #fff6f0;
+    transform: scale(1.1);
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: rgba(255, 182, 193, 0.9);
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background-color: #ffe0eb;
+    border-radius: 6px;
+    color: black;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección */
+section {
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 1100px;
+    background: rgba(255, 240, 245, 0.6);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(255, 192, 203, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s ease;
+}
+
+section:hover {
+    transform: scale(1.01);
+}
+
+/* Perritos */
+.perros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.perro {
+    background: linear-gradient(135deg, #ffffff, #ffeaf0);
+    border: 3px solid #ffc1cc;
+    border-radius: 20px;
+    padding: 18px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(255, 182, 193, 0.25);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.perro:hover {
+    transform: rotateY(5deg) rotateX(3deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+}
+
+.perro img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    border: 2px solid #ffd6de;
+}
+
+/* Botones */
+.perro button {
+    background-color: #ffb6c1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.perro button:hover {
+    background-color: #ffa6b9;
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 12px 28px rgba(255, 182, 193, 0.5);
+}
+
+/* Reloj */
+.reloj {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    background: rgba(255, 182, 193, 0.6);
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Video */
+#masinfo .ver-video {
+    display: none;
+    background-color: rgba(255, 192, 203, 0.8);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#masinfo:hover .ver-video {
+    display: inline-block;
+}
+
+#masinfo .ver-video:hover {
+    background-color: #ff94a8;
+}
+
+/* Contacto */
+#contacto p {
+    color: #cc5c7d;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Estilo para formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(255, 240, 245, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+/* Etiquetas */
+form label {
+    font-size: 18px;
+    color: #cc5c7d;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 200, 230, 0.3);
+}
+
+/* Inputs, textareas y selects */
+form input,
+form textarea,
+form select {
+    padding: 12px 16px;
+    border: 2px solid #ffc9de;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    color: #a74c63;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 6px 12px rgba(255, 200, 230, 0.25);
+    transition: all 0.3s ease, transform 0.3s ease;
+    outline: none;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #ffd9ec;
+    background: #fff7fa;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 200, 230, 0.5);
+}
+
+/* Texto de los inputs */
+form input::placeholder,
+form textarea::placeholder {
+    color: #d6809c;
+    font-style: italic;
+    text-shadow: 1px 1px 1px rgba(255, 200, 230, 0.2);
+}
+
+/* Botón del formulario */
+form button {
+    background-color: #ffb6c1;
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+form button:hover {
+    background-color: #ff94a8;
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 14px 30px rgba(255, 182, 193, 0.5);
+}

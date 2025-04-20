@@ -1,0 +1,247 @@
+<?php
+$perro = $_GET['perro'] ?? 'uno de nuestros perritos';
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Adopción</title>
+    <link rel="stylesheet" href="estiloformulario.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+            background-color: #ffe6f0; /* Un rosa muy suave para el fondo base */
+            background-image: url('huellitastop.jpeg'); /* Reemplaza con la URL de tu imagen */
+            background-size: cover; /* Cubre todo el fondo */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+        }
+
+        section {
+            max-width: 700px; /* Ajusta el ancho máximo según necesites */
+            background-color: rgba(255, 255, 255, 0.9); /* Blanco con ligera transparencia */
+            margin: 30px auto; /* Centra el formulario con un poco de margen */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(255, 182, 193, 0.3);
+        }
+
+        h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea,
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: 50%;
+            padding-right: 30px;
+        }
+
+        button[type="submit"] {
+            background-color: #ff69b4;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(255, 105, 180, 0.3);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #d81b60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(255, 105, 180, 0.5);
+        }
+
+        label input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .reloj {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Formulario de Solicitud de Adopción</h2>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = htmlspecialchars($_POST["nombre"]);
+            $correo = htmlspecialchars($_POST["email"]);
+            $perro_solicitado = htmlspecialchars($_POST["perro"]);
+            $mensaje = htmlspecialchars($_POST["motivo"]);
+
+            echo "<div class='mensaje-exito'>";
+            echo "<p>¡Gracias, <strong>$nombre</strong>! Hemos recibido tu solicitud para adoptar a <strong>$perro_solicitado</strong>.</p>";
+            echo "<p>Revisaremos tu información y te contactaremos pronto al correo electrónico <strong>$correo</strong> para darte los siguientes pasos.</p>";
+            echo "</div>";
+
+            echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'indexofficial'; // Cambia a la URL real de tu catálogo
+                }, 5000);
+            </script>";
+        } else {
+        ?>
+            <form method="POST" action="formulario.php">
+                <input type="hidden" name="perro" value="<?php echo htmlspecialchars($perro); ?>">
+
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" min="18" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="correo" name="email" required>
+
+                <label for="telefono">Número de teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+
+                <label for="direccion">Dirección completa:</label>
+                <textarea id="direccion" name="direccion" rows="2" required></textarea>
+
+                <label for="ingresos">¿Cuál es tu ingreso mensual aproximado?</label>
+                <input type="text" id="ingresos" name="ingresos" required>
+
+                <label for="estabilidad">¿Tienes estabilidad económica?</label>
+                <select id="estabilidad" name="estabilidad" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="emocional">Describe tu estabilidad emocional actual:</label>
+                <textarea id="emocional" name="emocional" rows="3" required></textarea>
+
+                <label for="experiencia">¿Tienes experiencia cuidando mascotas?</label>
+                <select id="experiencia" name="experiencia" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Mucha">Sí, mucha</option>
+                    <option value="Poca">Un poco</option>
+                    <option value="Nada">No, pero quiero aprender</option>
+                </select>
+
+                <label for="animales_anteriores">¿Has tenido mascotas antes? Cuéntanos sobre ellas:</label>
+                <textarea id="animales_anteriores" name="animales_anteriores" rows="3"></textarea>
+
+                <label for="tipo_hogar">¿Cómo es tu hogar?</label>
+                <select id="tipo_hogar" name="tipo_hogar" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Casa">Casa con patio</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                <label for="mascotas_actuales">¿Tienes otras mascotas actualmente? ¿Cuáles?</label>
+                <textarea id="mascotas_actuales" name="mascotas_actuales" rows="2"></textarea>
+
+                <label for="familia">¿Quiénes viven contigo? ¿Están de acuerdo con la adopción?</label>
+                <textarea id="familia" name="familia" rows="3" required></textarea>
+
+                <label for="motivo">¿Por qué quieres adoptar a <?php echo htmlspecialchars($perro); ?>?</label>
+                <textarea id="motivo" name="motivo" rows="3" required></textarea>
+
+                <label for="responsabilidad">¿Estás dispuesto a cuidar al perro por el resto de su vida?</label>
+                <select id="responsabilidad" name="responsabilidad" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label>
+                    <input type="checkbox" name="acepto" required>
+                    Acepto que toda la información proporcionada es verdadera y me comprometo a cuidar del animal con amor y responsabilidad.
+                </label>
+
+                <button type="submit">Enviar Solicitud</button>
+            </form>
+        <?php
+        }
+        ?>
+    </section>
+
+    <div class="reloj" id="reloj"></div>
+
+    <script>
+    function actualizarReloj() {
+        const reloj = document.getElementById('reloj');
+        const ahora = new Date();
+
+        //el dia que es
+        const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const fecha = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+        //La hora saldra en formato de 12 hrs
+        let horas = ahora.getHours();
+        const minutos = ahora.getMinutes().toString().padStart(2, '0');
+        const segundos = ahora.getSeconds().toString().padStart(2, '0');
+        const ampm = horas >= 12 ? 'PM' : 'AM';
+
+        //De 24 hrs a 12 hrs
+        horas = horas % 12;
+        horas = horas ? horas : 12; // La hora "0" se muestra como 12
+
+        reloj.textContent = `${fecha} - ${horas}:${minutos}:${segundos} ${ampm}`;
+    }
+
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+    </script>
+</body>
+</html>
